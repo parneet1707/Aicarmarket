@@ -3,11 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-   
- 
-  
-    "lint": "next lint",
-    "postinstall": "prisma generate"
+  "lint": "next lint",
+    "postinstall": "prisma generate",
      "dev": "next dev",
   "build": "next build",
   "start": "next start -p $PORT"
