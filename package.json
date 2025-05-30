@@ -3,14 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "lint": "next lint",
-    "postinstall": "prisma generate",
     "dev": "next dev",
     "build": "next build",
-    "start": "next start -p $PORT"
+    "start": "next start -p $PORT",
+    "lint": "next lint",
+    "format": "prettier --write .",
+    "db:push": "prisma db push",
+    "db:migrate": "prisma migrate dev",
+    "studio": "prisma studio",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
-    "@arcjet/next": "^1.0.0-beta.6",
     "@clerk/nextjs": "^6.16.0",
     "@google/generative-ai": "^0.24.0",
     "@hookform/resolvers": "^5.0.1",
@@ -26,7 +29,6 @@
     "@radix-ui/react-slot": "1.2.0",
     "@radix-ui/react-tabs": "1.1.4",
     "@radix-ui/react-use-controllable-state": "0.0.4",
-    "@supabase/ssr": "^0.6.1",
     "@supabase/supabase-js": "^2.49.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -48,9 +50,27 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@types/react-dropzone": "^14.2.2",
     "eslint": "^9",
     "eslint-config-next": "15.3.1",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.2.5",
     "prisma": "^6.6.0",
-    "tailwindcss": "^3.4.17"
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.4.0"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,css,md}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "printWidth": 100,
+    "tabWidth": 2,
+    "trailingComma": "es5"
   }
 }
